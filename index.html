@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html style="width: 21cm; height: 29.7cm;">
+
+<style> div{
+
+  border: solid 1px; width: 500px; height: 280px;
+  display: inline-block;
+
+  font-size: 13px;
+  
+
+}
+
+.nome{
+
+  width: 200px;
+
+  display:inline-flex; margin: 5px;
+
+  
+  
+
+}
+
+.end{
+
+  width: 250px;
+
+      display:inline-flex; margin: 5px;
+  
+}
+
+#cpf{
+
+  width: 120px;
+}
+
+#Bairro{
+
+  width: 120px;
+}
+.cid{
+
+  width: 100px;
+  margin: 5px;
+}
+
+.tel{
+
+  width: 100px;
+  margin: 5px;
+}
+img{
+
+  margin-left: 230px;
+  width: 250px;
+}
+
+html{
+
+  text-align: left;
+}
+</style>
+<head>
+    <title>Formulário de Etiqueta</title>
+    <link rel="stylesheet" href="./style4.css">
+
+</head>
+<body>
+    <div style="font-family: monospace;">
+        <h2>ETIQUETA</h2>
+        <b>Nome:</b><input type="text" class="nome" onkeyup="this.value = this.value.toUpperCase();">
+        <label for="cpf" class="cpf">CPF:</label>
+        <input type="text" id="cpf" onkeyup="this.value = this.value.toUpperCase();">
+        <br>
+        <b>Ende:</b><input type="text" class="end" onkeyup="this.value = this.value.toUpperCase();"><br>
+        <label for="end"><b>Bairro:</b></label>
+        <input type="text" id="bairro" onkeyup="this.value = this.value.toUpperCase();">
+        <br>
+        <b>Cid:</b><input type="text" class="cid" onkeyup="this.value = this.value.toUpperCase();">
+        <label for="cidade"></label>
+        <br>
+        <b>Vols:</b><input type="number" id="volumes" min="1">
+        <br>
+        <br>
+        <img src="https://uploads-ssl.webflow.com/623201a0da52900bfc863055/63485366c15643d2f025dea6_logo-rodonaves.png" width="150" height="50" alt="">
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+          <div id="etiquetas"></div>
+          <br>
+          <button onclick="gerarEtiquetas()">Gerar Etiquetas</button>
+          
+      
+    </div>
+    <script>
+        // Cria uma função para preencher a etiqueta
+        function gerarEtiquetas() {
+    // Lê o valor do campo de volumes
+    var volumes = document.getElementById('volumes').value;
+    
+    
+    // Limpa o conteúdo anterior das etiquetas
+    document.getElementById("etiquetas").innerHTML = "";
+    
+    // Laço para criar etiquetas baseadas na quantidade de volumes
+    for (var i = 1; i <= volumes; i++) {
+        // Cria um elemento div para cada etiqueta
+        var etiqueta = document.createElement("div");
+        etiqueta.classList.add("etiqueta");
+        
+        // Preenche as informações da etiqueta
+        etiqueta.innerHTML = 
+
+        etiqueta.innerHTML = 
+        "<h2>ETIQUETA</h2>" +
+        "<img src='https://uploads-ssl.webflow.com/623201a0da52900bfc863055/63485366c15643d2f025dea6_logo-rodonaves.png' width='100' height='50'>"+
+        "<p>Nome: <span id='label-nome'>" + document.querySelector('.nome').value + "</span></p>" +
+        "<p>Endereço: <span id='label-endereco'>" + document.querySelector('.end').value + "</span></p>" +
+        "<p>Bairro: <span id='label-bairro'>" + document.getElementById('bairro').value + "</span></p>" +
+        "<p>Cidade: <span id='label-cidade'>" + document.querySelector('.cid').value + "</span></p>" +
+        "<p>Quantidade de volumes: <span id='label-volumes'>" + volumes + "</span></p>" +
+        "<p>Volume: <span id='label-volume'>" + i + "/" + volumes + "</span></p>";
+        
+        // Adiciona a etiqueta à página
+        document.getElementById("etiquetas").appendChild(etiqueta);
+      }
+    // Adiciona o botão de impressão para cada etiqueta
+    var btnPrint = document.createElement("button");
+    btnPrint.innerHTML = "Imprimir Etiquetas";
+    btnPrint.onclick = function() {
+        window.print();
+    };
+    document.getElementById("etiquetas").appendChild(btnPrint);
+}
+
+    
+    // Cria uma string vazia para armazenar os volumes
+    var volumeString = "";
+    
+    // Laço para adicionar cada volume à string
+    for (var i = 1; i <= volumes; i++) {
+        volumeString += i + "/" + volumes + " ";
+    }
+    
+    // Preenche o campo de volume na etiqueta
+    document.getElementById("label-volume").innerHTML = volumeString;
+
+    
+</script>
+
+</body>
+</html>
+
+
